@@ -1,4 +1,4 @@
-import {evaluate, ACTIONS } from "../App";
+import {evaluate, ACTIONS} from '../App';
 
 export default function reducer (state, {type, payload}){
     switch (type) {
@@ -70,7 +70,7 @@ export default function reducer (state, {type, payload}){
                     }
                 }
                 return {
-                    ...tate,
+                    ...state,
                     currentOperand: state.currentOperand.slice(0 ,-1)
                 };
 

@@ -12,7 +12,7 @@ export const ACTIONS = {
   EVALUATE: "evaluate",
 };
 
-export function evaluate(currentOperand, previousOperand, operation) {
+export function evaluate({currentOperand, previousOperand, operation}) {
   const prev = parseFloat(previousOperand)
   const current = parseFloat(currentOperand)
   if (isNaN(prev) || isNaN(current)) return ""
@@ -37,7 +37,7 @@ export function evaluate(currentOperand, previousOperand, operation) {
   return computation.toString()
 }
 
-const INTEGER_FORMATTER = new Int1.NumberFormat('en-IN', {
+const INTEGER_FORMATTER = new Intl.NumberFormat('en-IN', {
   maximumFractionDigits: 0,
 })
 
@@ -60,12 +60,12 @@ function App ()  {
           <div className="previous-operand">
               {formatOperand(previousOperand)} {operation}
           </div>
-          <div className="curren-operand">
+          <div className="current-operand">
                 {formatOperand(currentOperand) || 0 }
           </div>
         </div>
         <div className="buttons">
-          <button onClick={() => dispatch({type: ACTIONS.CLEAR})} >AC</button>
+          <button onClick={() => dispatch({type: ACTIONS.CLEAR})}>AC</button>
           <button onClick={() => dispatch({type: ACTIONS.DELETE_DIGIT})}>DEL</button>
           <OperationButton operation="%" dispatch={dispatch}/>
           <OperationButton operation="÷" dispatch={dispatch}/>
